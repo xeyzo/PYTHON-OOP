@@ -1,18 +1,44 @@
 import logging
 
-logger = logging.getLogger("logging_tryout2")
+logger = logging.getLogger()
 logger.setLevel(logging.DEBUG)
-ch = logging.StreamHandler()
-ch.setLevel(logging.DEBUG)
-formatter = formatter = logging.Formatter("%(asctime)s;%(levelname)s;%(message)s","%Y-%m-%d %H:%M:%S")
-ch.setFormatter(formatter)
+fh = logging.FileHandler('app.log')
+fh.setLevel(logging.DEBUG)
+formatter = logging.Formatter("[%(asctime)s] %(levelname)s: %(message)s")
+fh.setFormatter(formatter)
+logger.addHandler(fh)
 
-logger.addHandler(ch)
-logger.error("We can't divide any numbers by zero.")
-logger.info("This is an information about something.")
-# logger.notice("Someone loves your status.")
-logger.warning("Insufficient funds.")
-logger.debug("This is debug message.")
-# logger.alert("Achtung! Achtung!")
-# logger.critical("Medic!! We've got critical damages.")
-# logger.emergency("System hung. Contact system administrator immediately!")
+class Log:
+    def info(self):
+        logger.info("This is an information about something.")
+
+    def error(self):
+        logger.error("We can't divide any numbers by zero.")
+
+    # def notice(self):
+    #     logger.notice("This is an information about something.")
+
+    def warning(self):
+        logger.warning("Insufficient funds.")
+
+    def debug(self):
+        logger.debug("This is debug message.")
+
+    # def alert(self):
+    #     logger.alert("This is an information about something.")
+
+    def critical(self):
+        logger.critical("Medic!! We've got critical damages.")
+
+    # def emergency(self):
+        # logger.emergency("This is an information about something.")
+
+log = Log()
+log.info()
+log.error()
+# log.notice()
+log.warning()
+log.debug()
+# log.alert()
+log.critical()
+# log.emergency()
