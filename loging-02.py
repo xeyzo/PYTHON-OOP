@@ -4,13 +4,10 @@ logger = logging.getLogger("logging_tryout2")
 logger.setLevel(logging.DEBUG)
 ch = logging.StreamHandler()
 ch.setLevel(logging.DEBUG)
-
 formatter = formatter = logging.Formatter("%(asctime)s;%(levelname)s;%(message)s","%Y-%m-%d %H:%M:%S")
-
 ch.setFormatter(formatter)
 
 logger.addHandler(ch)
-
 logger.error("We can't divide any numbers by zero.")
 logger.info("This is an information about something.")
 # logger.notice("Someone loves your status.")
